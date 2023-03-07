@@ -2,10 +2,42 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Paquete extends Model
+class Paquete
 {
-    use HasFactory;
+    public $id;
+    public $nombre;
+    private $arreglo;
+
+
+
+    public function save(){
+        $arreglo = session('arreglo',[]);
+        $arreglo[$this->id]=$this->nombre;
+        session((['arreglo'=>$arreglo]));
+        return true;
+
+    }
+
+    static public function find($id){
+        $arreglo = session('arreglo', []);
+        if(isset($arreglo[$id])){
+            $nuevo = new Paquete();
+            $nuevo ->id = $id;
+            $nuevo->nombre=$arreglo[$id];
+            return $nuevo;
+        }else{
+            return null;
+        }
+    }
+    static public function all(){
+        $arreglo = session('arreglo', []);
+        return $arreglo;
+        
+    }
+    
+    static public function delete($id){
+            $arreglo = session('arreglo',[]);
+            usset($arreglo[$id]);
+            session();
+        }
 }

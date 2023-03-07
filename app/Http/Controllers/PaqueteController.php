@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Paquete;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -11,9 +12,12 @@ class PaqueteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
-        //
+        $paquetes = Paquete::all();
+        return view ('paquetes.index', compact('paquetes'));
+
+    //    return view ('paquetes.index', ['paquetes'=>$paquetes]);
     }
 
     /**

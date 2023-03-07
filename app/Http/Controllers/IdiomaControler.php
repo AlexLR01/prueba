@@ -33,7 +33,6 @@ class idiomaControler extends Controller{
         }
         return view('saludar', compact('mensaje'));
     }
-
     public function despedir(){
         $idioma = session('idioma','espanol');
         switch($idioma){
@@ -52,5 +51,6 @@ class idiomaControler extends Controller{
         }
         return view('saludar', compact('mensaje'));
     }
+
 
 }

@@ -27,3 +27,7 @@ Route::get('despedir',[idiomaControler::class, 'despedir'])->name('despedir');
 Route::get('login',[SistemaController::class,'entrada']);
 Route::post('validar',[SistemaController::class,'validar'])->name('validar');
 Route::get('ropciones',[SistemaController::class,'mopciones'])->name('nopciones');
+
+Route::get('salir',[SistemaController::class, 'salir'])->name('salida');
+
+Route::get('paquetes',[PaqueteController::Class, 'index'])->name('paquete.index');
